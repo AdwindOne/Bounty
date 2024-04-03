@@ -1,0 +1,17 @@
+syntax = "proto3";
+package bounty.bounty;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+import "bounty/bounty/params.proto";
+
+option go_package = "Bounty/x/bounty/types";
+
+// GenesisState defines the bounty module's genesis state.
+message GenesisState {
+  // params defines all the parameters of the module.
+  Params params = 1 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
+}
