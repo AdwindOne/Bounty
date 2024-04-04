@@ -1,51 +1,60 @@
-# bounty
-**bounty** is a blockchain built using Cosmos SDK and Tendermint and created with [Ignite CLI](https://ignite.com/cli).
+# Bounty
 
-## Get started
+Bounty 是一个基于 [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) 和 [Ignite CLI](https://ignite.com/cli) 开发的去中心化应用（dApp），允许用户发布、领取并在完成后获得赏金的任务管理平台。
 
+## 快速开始
+
+以下步骤将指导你如何在本地环境安装、运行并测试Bounty。
+
+### 环境要求
+
+确保你的开发环境中已安装：
+
+- [Git](https://git-scm.com/)
+- [Go](https://golang.org/doc/install) 版本 1.21 或更高
+- [Ignite CLI](https://ignite.com/cli)
+
+### 安装指南
+
+克隆仓库并准备环境：
+
+```bash
+git clone https://github.com/AdwindOne/Bounty.git
+cd bounty
 ```
+
+构建项目并启动本地节点：
+```bash
+ignite chain build
 ignite chain serve
 ```
 
-`serve` command installs dependencies, builds, initializes, and starts your blockchain in development.
-
-### Configure
-
-Your blockchain in development can be configured with `config.yml`. To learn more, see the [Ignite CLI docs](https://docs.ignite.com).
-
-### Web Frontend
-
-Additionally, Ignite CLI offers both Vue and React options for frontend scaffolding:
-
-For a Vue frontend, use: `ignite scaffold vue`
-For a React frontend, use: `ignite scaffold react`
-These commands can be run within your scaffolded blockchain project. 
-
-
-For more information see the [monorepo for Ignite front-end development](https://github.com/ignite/web).
-
-## Release
-To release a new version of your blockchain, create and push a new tag with `v` prefix. A new draft release with the configured targets will be created.
-
-```
-git tag v0.1
-git push origin v0.1
+### 基本操作
+发布任务
+发布一个新的赏金任务：
+```bash
+bountyd tx bounty create-bounty [title] [description] [reward] --from=[your_key_name]
 ```
 
-After a draft release is created, make your final changes from the release page and publish it.
-
-### Install
-To install the latest version of your blockchain node's binary, execute the following command on your machine:
-
+领取任务
+领取一个现有的赏金任务：
+```bash
+bountyd tx bounty claim-bounty [bountyId] --from=[hacker_key_name]
 ```
-curl https://get.ignite.com/username/Bounty@latest! | sudo bash
+
+完成任务
+一旦任务完成，更新任务状态：
+```bash
+bountyd tx bounty complete-bounty [claimId] --from=[your_key_name]
 ```
-`username/Bounty` should match the `username` and `repo_name` of the Github repository to which the source code was pushed. Learn more about [the install process](https://github.com/allinbits/starport-installer).
 
-## Learn more
 
-- [Ignite CLI](https://ignite.com/cli)
-- [Tutorials](https://docs.ignite.com/guide)
-- [Ignite CLI docs](https://docs.ignite.com)
-- [Cosmos SDK docs](https://docs.cosmos.network)
-- [Developer Chat](https://discord.gg/ignite)
+### 如何贡献
+我们欢迎并鼓励社区成员以各种形式贡献，无论是提出建议、报告问题或直接贡献代码。请通过创建issue或拉取请求来提交贡献。
+
+### 许可
+该项目采用 MIT 许可证。更多信息请参见 LICENSE 文件。
+
+### 致谢
+感谢 Cosmos SDK 和 Ignite CLI 团队提供的工具和库。
+感谢所有直接或间接贡献了代码、文档和思想的社区成员。
