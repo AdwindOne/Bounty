@@ -76,6 +76,8 @@ import (
 	ibckeeper "github.com/cosmos/ibc-go/v8/modules/core/keeper"
 
 	bountymodulekeeper "Bounty/x/bounty/keeper"
+	platformmodulekeeper "Bounty/x/platform/keeper"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	"Bounty/docs"
@@ -140,7 +142,8 @@ type App struct {
 	ScopedICAControllerKeeper capabilitykeeper.ScopedKeeper
 	ScopedICAHostKeeper       capabilitykeeper.ScopedKeeper
 
-	BountyKeeper bountymodulekeeper.Keeper
+	BountyKeeper   bountymodulekeeper.Keeper
+	PlatformKeeper platformmodulekeeper.Keeper
 	// this line is used by starport scaffolding # stargate/app/keeperDeclaration
 
 	// simulation manager
@@ -280,6 +283,7 @@ func New(
 		&app.GroupKeeper,
 		&app.CircuitBreakerKeeper,
 		&app.BountyKeeper,
+		&app.PlatformKeeper,
 		// this line is used by starport scaffolding # stargate/app/keeperDefinition
 	); err != nil {
 		panic(err)

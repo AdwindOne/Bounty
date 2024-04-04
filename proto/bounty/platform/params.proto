@@ -1,0 +1,15 @@
+syntax = "proto3";
+package bounty.platform;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "Bounty/x/platform/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "bounty/x/platform/Params";
+  option (gogoproto.equal) = true;
+
+  
+}

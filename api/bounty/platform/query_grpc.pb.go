@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             (unknown)
-// source: bounty/bounty/query.proto
+// source: bounty/platform/query.proto
 
-package bounty
+package platform
 
 import (
 	context "context"
@@ -20,7 +20,7 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Query_Params_FullMethodName = "/bounty.bounty.Query/Params"
+	Query_Params_FullMethodName = "/bounty.platform.Query/Params"
 )
 
 // QueryClient is the client API for Query service.
@@ -99,7 +99,7 @@ func _Query_Params_Handler(srv interface{}, ctx context.Context, dec func(interf
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var Query_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "bounty.bounty.Query",
+	ServiceName: "bounty.platform.Query",
 	HandlerType: (*QueryServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
@@ -108,5 +108,5 @@ var Query_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "bounty/bounty/query.proto",
+	Metadata: "bounty/platform/query.proto",
 }
