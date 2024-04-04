@@ -20,7 +20,7 @@ Bounty 是一个基于 [Cosmos SDK](https://github.com/cosmos/cosmos-sdk) 和 [I
 
 ```bash
 git clone https://github.com/AdwindOne/Bounty.git
-cd bounty
+cd Bounty
 ```
 
 构建项目并启动本地节点：
