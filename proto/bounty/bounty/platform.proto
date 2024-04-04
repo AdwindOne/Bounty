@@ -1,0 +1,10 @@
+syntax = "proto3";
+package bounty.bounty;
+
+option go_package = "Bounty/x/bounty/types";
+
+message Platform {
+  string index = 1; 
+  string creator = 2;
+}
+

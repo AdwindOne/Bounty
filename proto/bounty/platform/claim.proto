@@ -1,0 +1,13 @@
+syntax = "proto3";
+package bounty.platform;
+
+option go_package = "Bounty/x/platform/types";
+
+message Claim {
+  string index = 1; 
+  string bountyId = 2; 
+  string hacker = 3; 
+  string status = 4; 
+  string creator = 5;
+}
+

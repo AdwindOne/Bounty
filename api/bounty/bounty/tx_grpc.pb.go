@@ -20,7 +20,10 @@ import (
 const _ = grpc.SupportPackageIsVersion7
 
 const (
-	Msg_UpdateParams_FullMethodName = "/bounty.bounty.Msg/UpdateParams"
+	Msg_UpdateParams_FullMethodName   = "/bounty.bounty.Msg/UpdateParams"
+	Msg_CreatePlatform_FullMethodName = "/bounty.bounty.Msg/CreatePlatform"
+	Msg_UpdatePlatform_FullMethodName = "/bounty.bounty.Msg/UpdatePlatform"
+	Msg_DeletePlatform_FullMethodName = "/bounty.bounty.Msg/DeletePlatform"
 )
 
 // MsgClient is the client API for Msg service.
@@ -30,6 +33,9 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	CreatePlatform(ctx context.Context, in *MsgCreatePlatform, opts ...grpc.CallOption) (*MsgCreatePlatformResponse, error)
+	UpdatePlatform(ctx context.Context, in *MsgUpdatePlatform, opts ...grpc.CallOption) (*MsgUpdatePlatformResponse, error)
+	DeletePlatform(ctx context.Context, in *MsgDeletePlatform, opts ...grpc.CallOption) (*MsgDeletePlatformResponse, error)
 }
 
 type msgClient struct {
@@ -49,6 +55,33 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) CreatePlatform(ctx context.Context, in *MsgCreatePlatform, opts ...grpc.CallOption) (*MsgCreatePlatformResponse, error) {
+	out := new(MsgCreatePlatformResponse)
+	err := c.cc.Invoke(ctx, Msg_CreatePlatform_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdatePlatform(ctx context.Context, in *MsgUpdatePlatform, opts ...grpc.CallOption) (*MsgUpdatePlatformResponse, error) {
+	out := new(MsgUpdatePlatformResponse)
+	err := c.cc.Invoke(ctx, Msg_UpdatePlatform_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeletePlatform(ctx context.Context, in *MsgDeletePlatform, opts ...grpc.CallOption) (*MsgDeletePlatformResponse, error) {
+	out := new(MsgDeletePlatformResponse)
+	err := c.cc.Invoke(ctx, Msg_DeletePlatform_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 // All implementations must embed UnimplementedMsgServer
 // for forward compatibility
@@ -56,6 +89,9 @@ type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	CreatePlatform(context.Context, *MsgCreatePlatform) (*MsgCreatePlatformResponse, error)
+	UpdatePlatform(context.Context, *MsgUpdatePlatform) (*MsgUpdatePlatformResponse, error)
+	DeletePlatform(context.Context, *MsgDeletePlatform) (*MsgDeletePlatformResponse, error)
 	mustEmbedUnimplementedMsgServer()
 }
 
@@ -65,6 +101,15 @@ type UnimplementedMsgServer struct {
 
 func (UnimplementedMsgServer) UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (UnimplementedMsgServer) CreatePlatform(context.Context, *MsgCreatePlatform) (*MsgCreatePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePlatform not implemented")
+}
+func (UnimplementedMsgServer) UpdatePlatform(context.Context, *MsgUpdatePlatform) (*MsgUpdatePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePlatform not implemented")
+}
+func (UnimplementedMsgServer) DeletePlatform(context.Context, *MsgDeletePlatform) (*MsgDeletePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePlatform not implemented")
 }
 func (UnimplementedMsgServer) mustEmbedUnimplementedMsgServer() {}
 
@@ -97,6 +142,60 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreatePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreatePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreatePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_CreatePlatform_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreatePlatform(ctx, req.(*MsgCreatePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdatePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdatePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdatePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_UpdatePlatform_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdatePlatform(ctx, req.(*MsgUpdatePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeletePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeletePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeletePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: Msg_DeletePlatform_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeletePlatform(ctx, req.(*MsgDeletePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Msg_ServiceDesc is the grpc.ServiceDesc for Msg service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -107,6 +206,18 @@ var Msg_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "CreatePlatform",
+			Handler:    _Msg_CreatePlatform_Handler,
+		},
+		{
+			MethodName: "UpdatePlatform",
+			Handler:    _Msg_UpdatePlatform_Handler,
+		},
+		{
+			MethodName: "DeletePlatform",
+			Handler:    _Msg_DeletePlatform_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

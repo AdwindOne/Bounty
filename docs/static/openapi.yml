@@ -4,6 +4,84 @@ info:
   name: ''
   description: ''
 paths:
+  /bounty.bounty.Msg/CreatePlatform:
+    post:
+      operationId: BountyBountyMsg_CreatePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+      tags:
+        - Msg
+  /bounty.bounty.Msg/DeletePlatform:
+    post:
+      operationId: BountyBountyMsg_DeletePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+      tags:
+        - Msg
   /bounty.bounty.Msg/UpdateParams:
     post:
       summary: |-
@@ -52,14 +130,227 @@ paths:
                   authority is the address that controls the module (defaults to
                   x/gov unless overwritten).
               params:
-                description: |-
-                  params defines the module parameters to update.
-
-                  NOTE: All parameters must be supplied.
+                description: 'NOTE: All parameters must be supplied.'
                 type: object
             description: MsgUpdateParams is the Msg/UpdateParams request type.
       tags:
         - Msg
+  /bounty.bounty.Msg/UpdatePlatform:
+    post:
+      operationId: BountyBountyMsg_UpdatePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+      tags:
+        - Msg
+  /Bounty/platform/claim:
+    get:
+      operationId: BountyPlatformQuery_ClaimAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              claim:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    index:
+                      type: string
+                    bountyId:
+                      type: string
+                    hacker:
+                      type: string
+                    status:
+                      type: string
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /Bounty/platform/claim/{index}:
+    get:
+      summary: Queries a list of Claim items.
+      operationId: BountyPlatformQuery_Claim
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              claim:
+                type: object
+                properties:
+                  index:
+                    type: string
+                  bountyId:
+                    type: string
+                  hacker:
+                    type: string
+                  status:
+                    type: string
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: index
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /Bounty/platform/params:
     get:
       summary: Parameters queries the parameters of the module.
@@ -96,6 +387,523 @@ paths:
                   additionalProperties: {}
       tags:
         - Query
+  /Bounty/platform/platform:
+    get:
+      operationId: BountyPlatformQuery_PlatformAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              platform:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    index:
+                      type: string
+                    title:
+                      type: string
+                    description:
+                      type: string
+                    reward:
+                      type: string
+                    creator1:
+                      type: string
+                    creator:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    description: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently. It will be empty if
+                      there are no more results.
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /Bounty/platform/platform/{index}:
+    get:
+      summary: Queries a list of Platform items.
+      operationId: BountyPlatformQuery_Platform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              platform:
+                type: object
+                properties:
+                  index:
+                    type: string
+                  title:
+                    type: string
+                  description:
+                    type: string
+                  reward:
+                    type: string
+                  creator1:
+                    type: string
+                  creator:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: index
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /bounty.platform.Msg/ClaimBounty:
+    post:
+      operationId: BountyPlatformMsg_ClaimBounty
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              bountyId:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/CompleteBounty:
+    post:
+      operationId: BountyPlatformMsg_CompleteBounty
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              claimId:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/CreateBounty:
+    post:
+      operationId: BountyPlatformMsg_CreateBounty
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              reward:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/CreateClaim:
+    post:
+      operationId: BountyPlatformMsg_CreateClaim
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+              bountyId:
+                type: string
+              hacker:
+                type: string
+              status:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/CreatePlatform:
+    post:
+      operationId: BountyPlatformMsg_CreatePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              reward:
+                type: string
+              creator1:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/DeleteClaim:
+    post:
+      operationId: BountyPlatformMsg_DeleteClaim
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/DeletePlatform:
+    post:
+      operationId: BountyPlatformMsg_DeletePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+      tags:
+        - Msg
+  /bounty.platform.Msg/UpdateClaim:
+    post:
+      operationId: BountyPlatformMsg_UpdateClaim
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+              bountyId:
+                type: string
+              hacker:
+                type: string
+              status:
+                type: string
+      tags:
+        - Msg
   /bounty.platform.Msg/UpdateParams:
     post:
       summary: |-
@@ -144,12 +952,56 @@ paths:
                   authority is the address that controls the module (defaults to
                   x/gov unless overwritten).
               params:
-                description: |-
-                  params defines the module parameters to update.
-
-                  NOTE: All parameters must be supplied.
+                description: 'NOTE: All parameters must be supplied.'
                 type: object
             description: MsgUpdateParams is the Msg/UpdateParams request type.
+      tags:
+        - Msg
+  /bounty.platform.Msg/UpdatePlatform:
+    post:
+      operationId: BountyPlatformMsg_UpdatePlatform
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            type: object
+            properties:
+              creator:
+                type: string
+              index:
+                type: string
+              title:
+                type: string
+              description:
+                type: string
+              reward:
+                type: string
+              creator1:
+                type: string
       tags:
         - Msg
   /cosmos.auth.v1beta1.Msg/UpdateParams:
@@ -16368,6 +17220,24 @@ paths:
       tags:
         - Msg
 definitions:
+  bounty.bounty.MsgCreatePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+  bounty.bounty.MsgCreatePlatformResponse:
+    type: object
+  bounty.bounty.MsgDeletePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+  bounty.bounty.MsgDeletePlatformResponse:
+    type: object
   bounty.bounty.MsgUpdateParams:
     type: object
     properties:
@@ -16377,10 +17247,7 @@ definitions:
           authority is the address that controls the module (defaults to x/gov
           unless overwritten).
       params:
-        description: |-
-          params defines the module parameters to update.
-
-          NOTE: All parameters must be supplied.
+        description: 'NOTE: All parameters must be supplied.'
         type: object
     description: MsgUpdateParams is the Msg/UpdateParams request type.
   bounty.bounty.MsgUpdateParamsResponse:
@@ -16388,6 +17255,15 @@ definitions:
     description: |-
       MsgUpdateParamsResponse defines the response structure for executing a
       MsgUpdateParams message.
+  bounty.bounty.MsgUpdatePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+  bounty.bounty.MsgUpdatePlatformResponse:
+    type: object
   bounty.bounty.Params:
     type: object
     description: Params defines the parameters for the module.
@@ -16726,9 +17602,161 @@ definitions:
                   "@type": "type.googleapis.com/google.protobuf.Duration",
                   "value": "1.212s"
                 }
+  bounty.platform.Claim:
+    type: object
+    properties:
+      index:
+        type: string
+      bountyId:
+        type: string
+      hacker:
+        type: string
+      status:
+        type: string
+      creator:
+        type: string
   bounty.platform.Params:
     type: object
     description: Params defines the parameters for the module.
+  bounty.platform.Platform:
+    type: object
+    properties:
+      index:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      reward:
+        type: string
+      creator1:
+        type: string
+      creator:
+        type: string
+  bounty.platform.QueryAllClaimResponse:
+    type: object
+    properties:
+      claim:
+        type: array
+        items:
+          type: object
+          properties:
+            index:
+              type: string
+            bountyId:
+              type: string
+            hacker:
+              type: string
+            status:
+              type: string
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  bounty.platform.QueryAllPlatformResponse:
+    type: object
+    properties:
+      platform:
+        type: array
+        items:
+          type: object
+          properties:
+            index:
+              type: string
+            title:
+              type: string
+            description:
+              type: string
+            reward:
+              type: string
+            creator1:
+              type: string
+            creator:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            description: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently. It will be empty if
+              there are no more results.
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  bounty.platform.QueryGetClaimResponse:
+    type: object
+    properties:
+      claim:
+        type: object
+        properties:
+          index:
+            type: string
+          bountyId:
+            type: string
+          hacker:
+            type: string
+          status:
+            type: string
+          creator:
+            type: string
+  bounty.platform.QueryGetPlatformResponse:
+    type: object
+    properties:
+      platform:
+        type: object
+        properties:
+          index:
+            type: string
+          title:
+            type: string
+          description:
+            type: string
+          reward:
+            type: string
+          creator1:
+            type: string
+          creator:
+            type: string
   bounty.platform.QueryParamsResponse:
     type: object
     properties:
@@ -16736,6 +17764,179 @@ definitions:
         description: params holds all the parameters of this module.
         type: object
     description: QueryParamsResponse is response type for the Query/Params RPC method.
+  cosmos.base.query.v1beta1.PageRequest:
+    type: object
+    properties:
+      key:
+        type: string
+        format: byte
+        description: |-
+          key is a value returned in PageResponse.next_key to begin
+          querying the next page most efficiently. Only one of offset or key
+          should be set.
+      offset:
+        type: string
+        format: uint64
+        description: |-
+          offset is a numeric offset that can be used when key is unavailable.
+          It is less efficient than using key. Only one of offset or key should
+          be set.
+      limit:
+        type: string
+        format: uint64
+        description: >-
+          limit is the total number of results to be returned in the result
+          page.
+
+          If left empty it will default to a value to be set by each app.
+      count_total:
+        type: boolean
+        description: >-
+          count_total is set to true  to indicate that the result set should
+          include
+
+          a count of the total number of items available for pagination in UIs.
+
+          count_total is only respected when offset is used. It is ignored when
+          key
+
+          is set.
+      reverse:
+        type: boolean
+        description: >-
+          reverse is set to true if results are to be returned in the descending
+          order.
+
+
+          Since: cosmos-sdk 0.43
+    description: |-
+      message SomeRequest {
+               Foo some_parameter = 1;
+               PageRequest pagination = 2;
+       }
+    title: |-
+      PageRequest is to be embedded in gRPC request messages for efficient
+      pagination. Ex:
+  cosmos.base.query.v1beta1.PageResponse:
+    type: object
+    properties:
+      next_key:
+        type: string
+        format: byte
+        description: |-
+          next_key is the key to be passed to PageRequest.key to
+          query the next page most efficiently. It will be empty if
+          there are no more results.
+      total:
+        type: string
+        format: uint64
+        title: |-
+          total is total number of results available if PageRequest.count_total
+          was set, its value is undefined otherwise
+    description: |-
+      PageResponse is to be embedded in gRPC response messages where the
+      corresponding request message has used PageRequest.
+
+       message SomeResponse {
+               repeated Bar results = 1;
+               PageResponse page = 2;
+       }
+  bounty.platform.MsgClaimBounty:
+    type: object
+    properties:
+      creator:
+        type: string
+      bountyId:
+        type: string
+  bounty.platform.MsgClaimBountyResponse:
+    type: object
+  bounty.platform.MsgCompleteBounty:
+    type: object
+    properties:
+      creator:
+        type: string
+      claimId:
+        type: string
+  bounty.platform.MsgCompleteBountyResponse:
+    type: object
+  bounty.platform.MsgCreateBounty:
+    type: object
+    properties:
+      creator:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      reward:
+        type: string
+  bounty.platform.MsgCreateBountyResponse:
+    type: object
+  bounty.platform.MsgCreateClaim:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+      bountyId:
+        type: string
+      hacker:
+        type: string
+      status:
+        type: string
+  bounty.platform.MsgCreateClaimResponse:
+    type: object
+  bounty.platform.MsgCreatePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      reward:
+        type: string
+      creator1:
+        type: string
+  bounty.platform.MsgCreatePlatformResponse:
+    type: object
+  bounty.platform.MsgDeleteClaim:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+  bounty.platform.MsgDeleteClaimResponse:
+    type: object
+  bounty.platform.MsgDeletePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+  bounty.platform.MsgDeletePlatformResponse:
+    type: object
+  bounty.platform.MsgUpdateClaim:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+      bountyId:
+        type: string
+      hacker:
+        type: string
+      status:
+        type: string
+  bounty.platform.MsgUpdateClaimResponse:
+    type: object
   bounty.platform.MsgUpdateParams:
     type: object
     properties:
@@ -16745,10 +17946,7 @@ definitions:
           authority is the address that controls the module (defaults to x/gov
           unless overwritten).
       params:
-        description: |-
-          params defines the module parameters to update.
-
-          NOTE: All parameters must be supplied.
+        description: 'NOTE: All parameters must be supplied.'
         type: object
     description: MsgUpdateParams is the Msg/UpdateParams request type.
   bounty.platform.MsgUpdateParamsResponse:
@@ -16756,6 +17954,23 @@ definitions:
     description: |-
       MsgUpdateParamsResponse defines the response structure for executing a
       MsgUpdateParams message.
+  bounty.platform.MsgUpdatePlatform:
+    type: object
+    properties:
+      creator:
+        type: string
+      index:
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      reward:
+        type: string
+      creator1:
+        type: string
+  bounty.platform.MsgUpdatePlatformResponse:
+    type: object
   cosmos.auth.v1beta1.MsgUpdateParams:
     type: object
     properties:

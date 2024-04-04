@@ -1,4 +1,5 @@
 syntax = "proto3";
+
 package bounty.bounty;
 
 import "amino/amino.proto";
@@ -6,25 +7,53 @@ import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "bounty/bounty/params.proto";
+import "bounty/bounty/platform.proto";
 
 option go_package = "Bounty/x/bounty/types";
 
 // Query defines the gRPC querier service.
 service Query {
+  
   // Parameters queries the parameters of the module.
-  rpc Params(QueryParamsRequest) returns (QueryParamsResponse) {
+  rpc Params (QueryParamsRequest) returns (QueryParamsResponse) {
     option (google.api.http).get = "/Bounty/bounty/params";
+  
+  }
+  
+  // Queries a list of Platform items.
+  rpc Platform    (QueryGetPlatformRequest) returns (QueryGetPlatformResponse) {
+    option (google.api.http).get = "/Bounty/bounty/platform/{index}";
+  
+  }
+  rpc PlatformAll (QueryAllPlatformRequest) returns (QueryAllPlatformResponse) {
+    option (google.api.http).get = "/Bounty/bounty/platform";
+  
   }
 }
-
 // QueryParamsRequest is request type for the Query/Params RPC method.
 message QueryParamsRequest {}
 
 // QueryParamsResponse is response type for the Query/Params RPC method.
 message QueryParamsResponse {
+  
   // params holds all the parameters of this module.
-  Params params = 1 [
-    (gogoproto.nullable) = false,
-    (amino.dont_omitempty) = true
-  ];
+  Params params = 1 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
 }
+
+message QueryGetPlatformRequest {
+  string index = 1;
+}
+
+message QueryGetPlatformResponse {
+  Platform platform = 1 [(gogoproto.nullable) = false];
+}
+
+message QueryAllPlatformRequest {
+  cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllPlatformResponse {
+  repeated Platform                               platform   = 1 [(gogoproto.nullable) = false];
+           cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
+

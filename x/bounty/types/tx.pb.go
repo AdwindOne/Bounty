@@ -36,8 +36,6 @@ const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 type MsgUpdateParams struct {
 	// authority is the address that controls the module (defaults to x/gov unless overwritten).
 	Authority string `protobuf:"bytes,1,opt,name=authority,proto3" json:"authority,omitempty"`
-	// params defines the module parameters to update.
-	//
 	// NOTE: All parameters must be supplied.
 	Params Params `protobuf:"bytes,2,opt,name=params,proto3" json:"params"`
 }
@@ -127,35 +125,314 @@ func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MsgUpdateParamsResponse proto.InternalMessageInfo
 
+type MsgCreatePlatform struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *MsgCreatePlatform) Reset()         { *m = MsgCreatePlatform{} }
+func (m *MsgCreatePlatform) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePlatform) ProtoMessage()    {}
+func (*MsgCreatePlatform) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{2}
+}
+func (m *MsgCreatePlatform) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreatePlatform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreatePlatform.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreatePlatform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePlatform.Merge(m, src)
+}
+func (m *MsgCreatePlatform) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreatePlatform) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePlatform.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreatePlatform proto.InternalMessageInfo
+
+func (m *MsgCreatePlatform) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreatePlatform) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type MsgCreatePlatformResponse struct {
+}
+
+func (m *MsgCreatePlatformResponse) Reset()         { *m = MsgCreatePlatformResponse{} }
+func (m *MsgCreatePlatformResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreatePlatformResponse) ProtoMessage()    {}
+func (*MsgCreatePlatformResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{3}
+}
+func (m *MsgCreatePlatformResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreatePlatformResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreatePlatformResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreatePlatformResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreatePlatformResponse.Merge(m, src)
+}
+func (m *MsgCreatePlatformResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreatePlatformResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreatePlatformResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreatePlatformResponse proto.InternalMessageInfo
+
+type MsgUpdatePlatform struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *MsgUpdatePlatform) Reset()         { *m = MsgUpdatePlatform{} }
+func (m *MsgUpdatePlatform) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdatePlatform) ProtoMessage()    {}
+func (*MsgUpdatePlatform) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{4}
+}
+func (m *MsgUpdatePlatform) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdatePlatform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdatePlatform.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdatePlatform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdatePlatform.Merge(m, src)
+}
+func (m *MsgUpdatePlatform) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdatePlatform) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdatePlatform.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdatePlatform proto.InternalMessageInfo
+
+func (m *MsgUpdatePlatform) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdatePlatform) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type MsgUpdatePlatformResponse struct {
+}
+
+func (m *MsgUpdatePlatformResponse) Reset()         { *m = MsgUpdatePlatformResponse{} }
+func (m *MsgUpdatePlatformResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdatePlatformResponse) ProtoMessage()    {}
+func (*MsgUpdatePlatformResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{5}
+}
+func (m *MsgUpdatePlatformResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdatePlatformResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdatePlatformResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdatePlatformResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdatePlatformResponse.Merge(m, src)
+}
+func (m *MsgUpdatePlatformResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdatePlatformResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdatePlatformResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdatePlatformResponse proto.InternalMessageInfo
+
+type MsgDeletePlatform struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *MsgDeletePlatform) Reset()         { *m = MsgDeletePlatform{} }
+func (m *MsgDeletePlatform) String() string { return proto.CompactTextString(m) }
+func (*MsgDeletePlatform) ProtoMessage()    {}
+func (*MsgDeletePlatform) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{6}
+}
+func (m *MsgDeletePlatform) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeletePlatform) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeletePlatform.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeletePlatform) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeletePlatform.Merge(m, src)
+}
+func (m *MsgDeletePlatform) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeletePlatform) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeletePlatform.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeletePlatform proto.InternalMessageInfo
+
+func (m *MsgDeletePlatform) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeletePlatform) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type MsgDeletePlatformResponse struct {
+}
+
+func (m *MsgDeletePlatformResponse) Reset()         { *m = MsgDeletePlatformResponse{} }
+func (m *MsgDeletePlatformResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeletePlatformResponse) ProtoMessage()    {}
+func (*MsgDeletePlatformResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_aad91682ee4aaa31, []int{7}
+}
+func (m *MsgDeletePlatformResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeletePlatformResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeletePlatformResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeletePlatformResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeletePlatformResponse.Merge(m, src)
+}
+func (m *MsgDeletePlatformResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeletePlatformResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeletePlatformResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeletePlatformResponse proto.InternalMessageInfo
+
 func init() {
 	proto.RegisterType((*MsgUpdateParams)(nil), "bounty.bounty.MsgUpdateParams")
 	proto.RegisterType((*MsgUpdateParamsResponse)(nil), "bounty.bounty.MsgUpdateParamsResponse")
+	proto.RegisterType((*MsgCreatePlatform)(nil), "bounty.bounty.MsgCreatePlatform")
+	proto.RegisterType((*MsgCreatePlatformResponse)(nil), "bounty.bounty.MsgCreatePlatformResponse")
+	proto.RegisterType((*MsgUpdatePlatform)(nil), "bounty.bounty.MsgUpdatePlatform")
+	proto.RegisterType((*MsgUpdatePlatformResponse)(nil), "bounty.bounty.MsgUpdatePlatformResponse")
+	proto.RegisterType((*MsgDeletePlatform)(nil), "bounty.bounty.MsgDeletePlatform")
+	proto.RegisterType((*MsgDeletePlatformResponse)(nil), "bounty.bounty.MsgDeletePlatformResponse")
 }
 
 func init() { proto.RegisterFile("bounty/bounty/tx.proto", fileDescriptor_aad91682ee4aaa31) }
 
 var fileDescriptor_aad91682ee4aaa31 = []byte{
-	// 315 bytes of a gzipped FileDescriptorProto
+	// 451 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4b, 0xca, 0x2f, 0xcd,
 	0x2b, 0xa9, 0xd4, 0x87, 0x52, 0x25, 0x15, 0x7a, 0x05, 0x45, 0xf9, 0x25, 0xf9, 0x42, 0xbc, 0x10,
 	0x01, 0x3d, 0x08, 0x25, 0x25, 0x98, 0x98, 0x9b, 0x99, 0x97, 0xaf, 0x0f, 0x26, 0x21, 0x2a, 0xa4,
 	0xc4, 0x93, 0xf3, 0x8b, 0x73, 0xf3, 0x8b, 0xf5, 0x73, 0x8b, 0xd3, 0xf5, 0xcb, 0x0c, 0x41, 0x14,
 	0x54, 0x42, 0x12, 0x22, 0x11, 0x0f, 0xe6, 0xe9, 0x43, 0x38, 0x50, 0x29, 0x91, 0xf4, 0xfc, 0xf4,
-	0x7c, 0x88, 0x38, 0x88, 0x05, 0x15, 0x95, 0x42, 0x75, 0x43, 0x41, 0x62, 0x51, 0x62, 0x2e, 0x54,
-	0x87, 0xd2, 0x76, 0x46, 0x2e, 0x7e, 0xdf, 0xe2, 0xf4, 0xd0, 0x82, 0x94, 0xc4, 0x92, 0xd4, 0x00,
-	0xb0, 0x8c, 0x90, 0x19, 0x17, 0x67, 0x62, 0x69, 0x49, 0x46, 0x7e, 0x51, 0x66, 0x49, 0xa5, 0x04,
-	0xa3, 0x02, 0xa3, 0x06, 0xa7, 0x93, 0xc4, 0xa5, 0x2d, 0xba, 0x22, 0x50, 0xab, 0x1c, 0x53, 0x52,
-	0x8a, 0x52, 0x8b, 0x8b, 0x83, 0x4b, 0x8a, 0x32, 0xf3, 0xd2, 0x83, 0x10, 0x4a, 0x85, 0x2c, 0xb8,
-	0xd8, 0x20, 0x66, 0x4b, 0x30, 0x29, 0x30, 0x6a, 0x70, 0x1b, 0x89, 0xea, 0xa1, 0x78, 0x52, 0x0f,
-	0x62, 0xbc, 0x13, 0xe7, 0x89, 0x7b, 0xf2, 0x0c, 0x2b, 0x9e, 0x6f, 0xd0, 0x62, 0x0c, 0x82, 0xaa,
-	0xb7, 0x32, 0x6a, 0x7a, 0xbe, 0x41, 0x0b, 0x61, 0x52, 0xd7, 0xf3, 0x0d, 0x5a, 0xf2, 0x50, 0xd7,
-	0x56, 0xc0, 0x9c, 0x8d, 0xe6, 0x4a, 0x25, 0x49, 0x2e, 0x71, 0x34, 0xa1, 0xa0, 0xd4, 0xe2, 0x82,
-	0xfc, 0xbc, 0xe2, 0x54, 0xa3, 0x14, 0x2e, 0x66, 0xdf, 0xe2, 0x74, 0xa1, 0x30, 0x2e, 0x1e, 0x14,
-	0x7f, 0xc9, 0xa1, 0xb9, 0x07, 0x4d, 0xbb, 0x94, 0x1a, 0x7e, 0x79, 0x98, 0xf1, 0x52, 0xac, 0x0d,
-	0x20, 0xc7, 0x3b, 0xe9, 0x9f, 0x78, 0x24, 0xc7, 0x78, 0xe1, 0x91, 0x1c, 0xe3, 0x83, 0x47, 0x72,
-	0x8c, 0x13, 0x1e, 0xcb, 0x31, 0x5c, 0x78, 0x2c, 0xc7, 0x70, 0xe3, 0xb1, 0x1c, 0x43, 0x94, 0xa8,
-	0x13, 0x9a, 0xdb, 0x4b, 0x2a, 0x0b, 0x52, 0x8b, 0x93, 0xd8, 0xc0, 0x41, 0x6e, 0x0c, 0x08, 0x00,
-	0x00, 0xff, 0xff, 0x6d, 0xca, 0x56, 0xef, 0x14, 0x02, 0x00, 0x00,
+	0x7c, 0x88, 0x38, 0x88, 0x05, 0x15, 0x95, 0x42, 0x75, 0x43, 0x41, 0x62, 0x51, 0x62, 0x2e, 0x4c,
+	0x87, 0x0c, 0x9a, 0x5c, 0x4e, 0x62, 0x49, 0x5a, 0x7e, 0x51, 0x2e, 0x44, 0x56, 0x69, 0x3b, 0x23,
+	0x17, 0xbf, 0x6f, 0x71, 0x7a, 0x68, 0x41, 0x4a, 0x62, 0x49, 0x6a, 0x00, 0x58, 0x9f, 0x90, 0x19,
+	0x17, 0x67, 0x62, 0x69, 0x49, 0x46, 0x7e, 0x51, 0x66, 0x49, 0xa5, 0x04, 0xa3, 0x02, 0xa3, 0x06,
+	0xa7, 0x93, 0xc4, 0xa5, 0x2d, 0xba, 0x22, 0x50, 0x87, 0x38, 0xa6, 0xa4, 0x14, 0xa5, 0x16, 0x17,
+	0x07, 0x97, 0x14, 0x65, 0xe6, 0xa5, 0x07, 0x21, 0x94, 0x0a, 0x59, 0x70, 0xb1, 0x41, 0x6c, 0x96,
+	0x60, 0x52, 0x60, 0xd4, 0xe0, 0x36, 0x12, 0xd5, 0x43, 0x09, 0x02, 0x3d, 0x88, 0xf1, 0x4e, 0x9c,
+	0x27, 0xee, 0xc9, 0x33, 0xac, 0x78, 0xbe, 0x41, 0x8b, 0x31, 0x08, 0xaa, 0xde, 0xca, 0xa8, 0xe9,
+	0xf9, 0x06, 0x2d, 0x84, 0x49, 0x5d, 0xcf, 0x37, 0x68, 0xc9, 0x43, 0xdd, 0x5b, 0x01, 0x73, 0x38,
+	0x9a, 0x2b, 0x95, 0x24, 0xb9, 0xc4, 0xd1, 0x84, 0x82, 0x52, 0x8b, 0x0b, 0xf2, 0xf3, 0x8a, 0x53,
+	0x95, 0x02, 0xb9, 0x04, 0x7d, 0x8b, 0xd3, 0x9d, 0x8b, 0x52, 0x41, 0x52, 0x50, 0xff, 0x0a, 0x49,
+	0x70, 0xb1, 0x27, 0x83, 0x44, 0xf2, 0x8b, 0x20, 0x7e, 0x0a, 0x82, 0x71, 0x85, 0x44, 0xb8, 0x58,
+	0x33, 0xf3, 0x52, 0x52, 0x2b, 0xc0, 0xce, 0xe6, 0x0c, 0x82, 0x70, 0xac, 0x78, 0x40, 0x6e, 0x82,
+	0xa9, 0x51, 0x92, 0xe6, 0x92, 0xc4, 0x30, 0x12, 0xcd, 0x3e, 0xa8, 0x53, 0xa8, 0x69, 0x1f, 0xaa,
+	0x91, 0x68, 0xf6, 0xb9, 0xa4, 0xe6, 0xa4, 0x52, 0xd9, 0x3e, 0x54, 0x23, 0x61, 0xf6, 0x19, 0xfd,
+	0x63, 0xe2, 0x62, 0xf6, 0x2d, 0x4e, 0x17, 0x0a, 0xe3, 0xe2, 0x41, 0x49, 0x28, 0x72, 0x68, 0x11,
+	0x8c, 0x16, 0x1f, 0x52, 0x6a, 0xf8, 0xe5, 0x61, 0xe6, 0x0b, 0xc5, 0x70, 0xf1, 0xa1, 0x45, 0x96,
+	0x02, 0xa6, 0x4e, 0x54, 0x15, 0x52, 0x1a, 0x84, 0x54, 0x20, 0x9b, 0x8e, 0x16, 0x35, 0x0a, 0x38,
+	0xdd, 0x85, 0xc7, 0x74, 0xec, 0x71, 0x01, 0x32, 0x1d, 0x2d, 0x22, 0xb0, 0x98, 0x8e, 0xaa, 0x02,
+	0x9b, 0xe9, 0xd8, 0x43, 0x5e, 0x8a, 0xb5, 0x01, 0x94, 0x4f, 0x9c, 0xf4, 0x4f, 0x3c, 0x92, 0x63,
+	0xbc, 0xf0, 0x48, 0x8e, 0xf1, 0xc1, 0x23, 0x39, 0xc6, 0x09, 0x8f, 0xe5, 0x18, 0x2e, 0x3c, 0x96,
+	0x63, 0xb8, 0xf1, 0x58, 0x8e, 0x21, 0x4a, 0xd4, 0x09, 0x2d, 0x9b, 0x94, 0x54, 0x16, 0xa4, 0x16,
+	0x27, 0xb1, 0x81, 0x73, 0xb7, 0x31, 0x20, 0x00, 0x00, 0xff, 0xff, 0x1d, 0xcc, 0x66, 0x53, 0x9d,
+	0x04, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -173,6 +450,9 @@ type MsgClient interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(ctx context.Context, in *MsgUpdateParams, opts ...grpc.CallOption) (*MsgUpdateParamsResponse, error)
+	CreatePlatform(ctx context.Context, in *MsgCreatePlatform, opts ...grpc.CallOption) (*MsgCreatePlatformResponse, error)
+	UpdatePlatform(ctx context.Context, in *MsgUpdatePlatform, opts ...grpc.CallOption) (*MsgUpdatePlatformResponse, error)
+	DeletePlatform(ctx context.Context, in *MsgDeletePlatform, opts ...grpc.CallOption) (*MsgDeletePlatformResponse, error)
 }
 
 type msgClient struct {
@@ -192,11 +472,41 @@ func (c *msgClient) UpdateParams(ctx context.Context, in *MsgUpdateParams, opts 
 	return out, nil
 }
 
+func (c *msgClient) CreatePlatform(ctx context.Context, in *MsgCreatePlatform, opts ...grpc.CallOption) (*MsgCreatePlatformResponse, error) {
+	out := new(MsgCreatePlatformResponse)
+	err := c.cc.Invoke(ctx, "/bounty.bounty.Msg/CreatePlatform", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdatePlatform(ctx context.Context, in *MsgUpdatePlatform, opts ...grpc.CallOption) (*MsgUpdatePlatformResponse, error) {
+	out := new(MsgUpdatePlatformResponse)
+	err := c.cc.Invoke(ctx, "/bounty.bounty.Msg/UpdatePlatform", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeletePlatform(ctx context.Context, in *MsgDeletePlatform, opts ...grpc.CallOption) (*MsgDeletePlatformResponse, error) {
+	out := new(MsgDeletePlatformResponse)
+	err := c.cc.Invoke(ctx, "/bounty.bounty.Msg/DeletePlatform", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// UpdateParams defines a (governance) operation for updating the module
 	// parameters. The authority defaults to the x/gov module account.
 	UpdateParams(context.Context, *MsgUpdateParams) (*MsgUpdateParamsResponse, error)
+	CreatePlatform(context.Context, *MsgCreatePlatform) (*MsgCreatePlatformResponse, error)
+	UpdatePlatform(context.Context, *MsgUpdatePlatform) (*MsgUpdatePlatformResponse, error)
+	DeletePlatform(context.Context, *MsgDeletePlatform) (*MsgDeletePlatformResponse, error)
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
@@ -205,6 +515,15 @@ type UnimplementedMsgServer struct {
 
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
+}
+func (*UnimplementedMsgServer) CreatePlatform(ctx context.Context, req *MsgCreatePlatform) (*MsgCreatePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreatePlatform not implemented")
+}
+func (*UnimplementedMsgServer) UpdatePlatform(ctx context.Context, req *MsgUpdatePlatform) (*MsgUpdatePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePlatform not implemented")
+}
+func (*UnimplementedMsgServer) DeletePlatform(ctx context.Context, req *MsgDeletePlatform) (*MsgDeletePlatformResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeletePlatform not implemented")
 }
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
@@ -229,6 +548,60 @@ func _Msg_UpdateParams_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Msg_CreatePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreatePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreatePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bounty.bounty.Msg/CreatePlatform",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreatePlatform(ctx, req.(*MsgCreatePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdatePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdatePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdatePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bounty.bounty.Msg/UpdatePlatform",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdatePlatform(ctx, req.(*MsgUpdatePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeletePlatform_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeletePlatform)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeletePlatform(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/bounty.bounty.Msg/DeletePlatform",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeletePlatform(ctx, req.(*MsgDeletePlatform))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 var _Msg_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "bounty.bounty.Msg",
 	HandlerType: (*MsgServer)(nil),
@@ -236,6 +609,18 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "UpdateParams",
 			Handler:    _Msg_UpdateParams_Handler,
+		},
+		{
+			MethodName: "CreatePlatform",
+			Handler:    _Msg_CreatePlatform_Handler,
+		},
+		{
+			MethodName: "UpdatePlatform",
+			Handler:    _Msg_UpdatePlatform_Handler,
+		},
+		{
+			MethodName: "DeletePlatform",
+			Handler:    _Msg_DeletePlatform_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -305,6 +690,186 @@ func (m *MsgUpdateParamsResponse) MarshalToSizedBuffer(dAtA []byte) (int, error)
 	return len(dAtA) - i, nil
 }
 
+func (m *MsgCreatePlatform) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreatePlatform) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreatePlatform) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreatePlatformResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreatePlatformResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreatePlatformResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdatePlatform) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdatePlatform) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdatePlatform) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdatePlatformResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdatePlatformResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdatePlatformResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeletePlatform) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeletePlatform) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeletePlatform) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeletePlatformResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeletePlatformResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeletePlatformResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	offset -= sovTx(v)
 	base := offset
@@ -332,6 +897,84 @@ func (m *MsgUpdateParams) Size() (n int) {
 }
 
 func (m *MsgUpdateParamsResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgCreatePlatform) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCreatePlatformResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdatePlatform) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgUpdatePlatformResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeletePlatform) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeletePlatformResponse) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -488,6 +1131,498 @@ func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 		}
 		if fieldNum <= 0 {
 			return fmt.Errorf("proto: MsgUpdateParamsResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreatePlatform) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreatePlatform: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreatePlatform: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreatePlatformResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreatePlatformResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreatePlatformResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdatePlatform) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdatePlatform: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdatePlatform: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdatePlatformResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdatePlatformResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdatePlatformResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeletePlatform) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeletePlatform: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeletePlatform: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeletePlatformResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeletePlatformResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeletePlatformResponse: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		default:
