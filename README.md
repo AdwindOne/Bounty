@@ -53,7 +53,7 @@ bountyd tx bounty complete-bounty [claimId] --from=[your_key_name]
 我们欢迎并鼓励社区成员以各种形式贡献，无论是提出建议、报告问题或直接贡献代码。请通过创建issue或拉取请求来提交贡献。
 
 ### 许可
-该项目采用 MIT 许可证。更多信息请参见 LICENSE 文件。
+该项目采用  Apache-2.0 license ，可自有使用参与共建
 
 ### 致谢
 感谢 Cosmos SDK 和 Ignite CLI 团队提供的工具和库。
